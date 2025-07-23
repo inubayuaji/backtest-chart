@@ -1,8 +1,14 @@
-import { createChart, type IChartApi, type CandlestickData, type ISeriesApi, CandlestickSeries } from "lightweight-charts";
+import {
+  createChart,
+  type IChartApi,
+  type CandlestickData,
+  type ISeriesApi,
+  CandlestickSeries,
+} from "lightweight-charts";
 import { useEffect, useRef } from "react";
 
 interface Prop {
-  data: CandlestickData[]
+  data: CandlestickData[];
 }
 
 const ChartArea: React.FC<Prop> = ({ data }) => {
@@ -19,17 +25,17 @@ const ChartArea: React.FC<Prop> = ({ data }) => {
       height: chartContainerRef.current.clientHeight,
       grid: {
         vertLines: {
-          color: '#EBEBEB'
+          color: "#EBEBEB",
         },
         horzLines: {
-          color: '#EBEBEB'
-        }
+          color: "#EBEBEB",
+        },
       },
       rightPriceScale: {
-        borderVisible: false
+        borderVisible: false,
       },
       timeScale: {
-        borderVisible: false
+        borderVisible: false,
       },
     });
 
@@ -37,9 +43,8 @@ const ChartArea: React.FC<Prop> = ({ data }) => {
     candleSeriesRef.current = chartRef.current.addSeries(CandlestickSeries);
     candleSeriesRef.current.setData(data);
 
-
     // responsive resize chart
-    const resizeObserver = new ResizeObserver(entries => {
+    const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         if (entry.contentRect.width && chartRef.current) {
           chartRef.current.applyOptions({ width: entry.contentRect.width });
@@ -55,18 +60,38 @@ const ChartArea: React.FC<Prop> = ({ data }) => {
     return () => {
       resizeObserver.disconnect();
       chartRef.current?.remove();
-    }
+    };
   }, [data]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        height: "100%",
+        borderRadius: "3px",
+        overflow: "hidden",
+      }}
+    >
       <div
         ref={chartContainerRef}
-        style={{ background: '#fff', width: '100%', height: 'calc(100% - 39px)', borderTopLeftRadius: '3px', overflow: 'hidden' }}
+        style={{
+          background: "#fff",
+          width: "100%",
+          height: "calc(100% - 39px)",
+        }}
       />
-      <div style={{ background: '#fff', width: '100%', height: '38px', borderTop: 'solid 1px #EBEBEB', borderBottomLeftRadius: '3px' }} />
+      <div
+        style={{
+          background: "#fff",
+          width: "100%",
+          height: "38px",
+          borderTop: "solid 1px #EBEBEB",
+        }}
+      />
     </div>
   );
-}
+};
 
 export default ChartArea;
