@@ -2,8 +2,8 @@ import type { CandlestickData } from "lightweight-charts";
 import ChartArea from "./components/ChartArea";
 import LeftToolbar from "./components/LeftToolbar";
 import TopToolbar from "./components/TopToolbar";
-import BottomToolbar from "./components/BottomToolbar";
-import RightToolbar from "./components/RightToolbar";
+// import BottomToolbar from "./components/BottomToolbar";
+// import RightToolbar from "./components/RightToolbar";
 
 const App: React.FC = () => {
   const candlestickData: CandlestickData[] = [
@@ -28,13 +28,9 @@ const App: React.FC = () => {
             <div className="row">
               <ChartArea data={candlestickData} />
             </div>
-            <div className="row no-grow">
-              <BottomToolbar />
-            </div>
+            <div className="row no-grow">{/* <BottomToolbar /> */}</div>
           </div>
-          <div className="col no-grow">
-            <RightToolbar />
-          </div>
+          <div className="col no-grow">{/* <RightToolbar /> */}</div>
         </div>
       </div>
     </div>

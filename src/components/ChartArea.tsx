@@ -70,7 +70,7 @@ const ChartArea: React.FC<Prop> = ({ data }) => {
         flexDirection: "column",
         width: "100%",
         height: "100%",
-        borderRadius: "3px",
+        borderTopLeftRadius: "3px",
         overflow: "hidden",
       }}
     >

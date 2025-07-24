@@ -26,3 +26,10 @@ body {
 .no-grow {
   flex-grow: 0;
 }
+
+.tool-icon.active {
+  background: #ebebeb;
+}
+.tool-icon:hover {
+  background: #ebebeb;
+}
